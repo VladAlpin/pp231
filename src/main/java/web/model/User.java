@@ -1,6 +1,11 @@
 package web.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
@@ -17,14 +22,14 @@ public class User {
     @Pattern(regexp = "[A-Za-z]{2,15}", message = "Name should be between 2 and 15 latin characters")
     private String name;
 
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     @Pattern(regexp = "[A-Za-z]{2,15}", message = "Name should be between 2 and 15 latin characters")
     private String lastName;
 
     @Min(value = 0, message = "Age should be >= 0")
     @Max(value = 127, message = "Age should be < 128")
     @Column(name = "age")
-    private Integer age;
+    private Byte age;
 
     @Column(name = "email")
     @Pattern(regexp = "([A-z0-9_.-]+)@([A-z0-9_.-]+).([A-z]{2,8})", message = "Enter correct email")
@@ -54,11 +59,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Integer getAge() {
+    public Byte getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(Byte age) {
         this.age = age;
     }
 
